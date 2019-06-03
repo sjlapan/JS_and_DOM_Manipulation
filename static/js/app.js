@@ -18,9 +18,11 @@ if (inputSel.property("value") == null) {
             })
     });
 } else {
+    // After 
     submit.on("click", function () {
         // Prevent the page from refreshing
         d3.event.preventDefault();
+        var inputValue = inputSel.property("value");
         var matchingDates = data.filter(sighting => {
             return sighting.Date == inputValue;
             console.log(matchingDates)
