@@ -2,8 +2,8 @@ var tbody = d3.select("tbody");
 
 // Provide a means of filtering the table by date
 
-var inputSel = d3.select("form-control");
-var submit = d3.select("filter-btn");
+var inputSel = d3.select("#datetime");
+var submit = d3.select("#filter-btn");
 
 
 // Append the table data from the data file
@@ -24,9 +24,11 @@ submit.on("click", function () {
     d3.event.preventDefault();
     var inputValue = inputSel.property("value");
     var matchingDates = data.filter(sighting => {
-        return sighting.Date == inputValue;
+        return sighting.datetime == inputValue;
     });
     console.log(matchingDates)
+    // Clear existing entries
+    document.getElementById("data-rows").innerHTML = "";
     matchingDates.forEach(datum => {
         var tr = tbody.append("tr");
         Object
